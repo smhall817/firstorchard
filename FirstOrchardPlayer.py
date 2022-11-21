@@ -10,11 +10,11 @@
 # To modify the number of games simulated, simply change
 # the variable num_games on line 19.
 
-
 from FirstOrchardTextless import firstorchard
 import csv
 import matplotlib.pyplot as plt
 from collections import Counter
+import statistics
 
 num_games = 100000
 
@@ -44,6 +44,10 @@ length_data = Counter(game_lengths).items()
 length = Counter(game_lengths).keys()
 frequency = Counter(game_lengths).values()
 
+win_avg = [x[1] for x in outcomes if x[0] == 1]
+win_mean = round(statistics.mean(win_avg), 2)
+loss_avg = [x[1] for x in outcomes if x[0] == 0]
+loss_mean = round(statistics.mean(loss_avg), 2)
 
 fig, (axs1, axs2) = plt.subplots(1, 2, figsize = (16,8), gridspec_kw = {"width_ratios": [5, 1]})
 axs1.hist2d(length, frequency, bins = 100, cmap=plt.cm.Greys)
@@ -53,4 +57,6 @@ axs1.set_ylabel("Frequency")
 fig.suptitle("Outcomes of " + str(num_games) + " \"First Orchard\" Games")
 axs1.set_title("Game Lengths")
 axs2.set_title("Results")
+axs1.annotate("Average length of winning game: " + str(win_mean) + " turns\n", xy = (0.5, 0), xycoords=('axes fraction', 'figure fraction'),size=14, ha='center', va='bottom')
+axs1.annotate("Averge length of losing game: " + str(loss_mean) + " turns", xy = (0.5, 0), xycoords=('axes fraction', 'figure fraction'),size=14, ha='center', va='bottom')
 plt.show()

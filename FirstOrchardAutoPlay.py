@@ -5,7 +5,7 @@ import random
 print("First Orchard\n")
 
 # Establish variables
-bird = 1
+bird = 0
 red = 4
 yellow = 4
 green = 4
@@ -17,7 +17,7 @@ playing = True
 def status():
     global roll_num
     if roll_num == 1:
-        print("The bird begins on space 1.")
+        print("The bird begins on space 0.")
     else:
         print("The bird is currently on space " + str(bird) + " of 5\n")
     print("The remaining fruits are:")

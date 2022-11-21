@@ -4,7 +4,7 @@ def firstorchard():
     import random
 
     # Establish variables
-    bird = 1
+    bird = 0
     red = 4
     yellow = 4
     green = 4
